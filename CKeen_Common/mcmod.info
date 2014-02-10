@@ -1,0 +1,11 @@
+[
+{
+  "modid": "NOOBHAUS_CommanderKeen",
+  "name": "Commander KeenCraft",
+  "description": "Bringing Commander Keen to Minecraft!",
+  "version": "0.0.1",
+  "mcversion": "1.6.4",
+  "url": "",
+  "authors": [ "PsiCoTix" ]
+}
+]

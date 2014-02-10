@@ -1,0 +1,42 @@
+Commander Keen
+http://www.shikadi.net/keenwiki/Keen_1_Creatures
+
+Mobs (7)
+
+Butler Robot
+0 dmg + knockback
+
+Grag
+Does damage on touch
+
+Pat Pat
+Immobile Plant
+
+Tank Robot
+Does damage on touch
+
+Vorticon (Guard and Commander)
+
+Yarp
+Friendly
+
+Items
+Key Cards X 4 Yellow, Red, Green, Blue
+Pogo Stick = Always jumping + super jump
+Ray Gun
+Ray Gun Ammunition
+
+Ship parts (when all combined player is returned to over world)
+Joystick
+Car Battery
+Vacuum Cleaner
+Everclear
+
+Point Items
+
+Lollipop – 100 points
+Soda – 200 points
+Pizza – 500 points
+Book – 1000 points
+Teddy Bear – 5000 points
+
