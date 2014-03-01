@@ -23,6 +23,7 @@ public class BlockMarsDirt extends Block
 	{
 		super(par1, Material.ground);
 		this.setUnlocalizedName("Mars Dirt");
+		this.setTickRandomly(true);
 		this.setCreativeTab(Commander_KeenTab.KeenTab);
 		this.setHardness(30F);
 		
