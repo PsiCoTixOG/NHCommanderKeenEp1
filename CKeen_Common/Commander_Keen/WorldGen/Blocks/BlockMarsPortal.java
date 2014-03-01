@@ -49,6 +49,82 @@ public class BlockMarsPortal extends BlockPortal
            }
     }
 	
+	public void onBlockAdded(World par1World, int par2, int par3, int par4)
+	{
+	/** Change these to your portal frame and Portal block **/
+	if ((par1World.getBlockId(par2, par3 - 1, par4) != commander_keen.MarsDirt.blockID) || (!tryToCreatePortal(par1World, par2, par3, par4)))
+	{
+	if ((!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4)))
+	{
+	par1World.setBlockToAir(par2, par3, par4);
+	}
+	else
+	{
+	par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, tickRate(par1World) + par1World.rand.nextInt(10));
+	}
+	}
+	}
+	/**
+	* Checks to see if this location is valid to create a portal and will return True if it does. Args: world, x, y, z
+	*/
+	public boolean tryToCreatePortal(World par1World, int par2, int par3, int par4)
+	{
+	byte b0 = 0;
+	byte b1 = 0;
+	if (par1World.getBlockId(par2 - 1, par3, par4) == commander_keen.MarsDirt.blockID || par1World.getBlockId(par2 + 1, par3, par4) == commander_keen.MarsDirt.blockID)
+	{
+	b0 = 1;
+	}
+	if (par1World.getBlockId(par2, par3, par4 - 1) == commander_keen.MarsDirt.blockID || par1World.getBlockId(par2, par3, par4 + 1) == commander_keen.MarsDirt.blockID)
+	{
+	b1 = 1;
+	}
+	if (b0 == b1)
+	{
+	return false;
+	}
+	else
+	{
+	if (par1World.getBlockId(par2 - b0, par3, par4 - b1) == 0)
+	{
+	par2 -= b0;
+	par4 -= b1;
+	}
+	int l;
+	int i1;
+	for (l = -1; l <= 2; ++l)
+	{
+	for (i1 = -1; i1 <= 3; ++i1)
+	{
+	         boolean flag = l == -1 || l == 2 || i1 == -1 || i1 == 3;
+	         if (l != -1 && l != 2 || i1 != -1 && i1 != 3)
+	         {
+	         int j1 = par1World.getBlockId(par2 + b0 * l, par3 + i1, par4 + b1 * l);
+	         if (flag)
+	         {
+	         if (j1 !=commander_keen.MarsDirt.blockID)
+	         {
+	         return false;
+	         }
+	         }
+	         else if (j1 != 0 && j1 != commander_keen.MarsStone.blockID)
+	         {
+	         return false;
+	         }
+	         }
+	}
+	}
+	for (l = 0; l < 2; ++l)
+	{
+	for (i1 = 0; i1 < 3; ++i1)
+	{
+	         par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, commander_keen.MarsPortal.blockID, 0, 2);
+	}
+	}
+	return true;
+	}
+	}
+	
 	@SideOnly(Side.CLIENT)
 	private Icon icons;
 	      

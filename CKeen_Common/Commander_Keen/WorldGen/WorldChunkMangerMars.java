@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import Commander_Keen.commander_keen;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
@@ -89,6 +92,73 @@ public class WorldChunkMangerMars extends WorldChunkManager
 	}
 
 	return par1ArrayOfBiomeGenBase;
+	}
+	
+	/**
+	* Returns a list of rainfall values for the specified blocks. Args:
+	* listToReuse, x, z, width, length.
+	*/
+	public float[] getRainfall(float[] par1ArrayOfFloat, int par2, int par3, int par4, int par5)
+	{
+	IntCache.resetIntCache();
+
+	if (par1ArrayOfFloat == null || par1ArrayOfFloat.length < par4 * par5)
+	{
+	par1ArrayOfFloat = new float[par4 * par5];
+	}
+
+	int[] aint = this.myBiomeIndexLayer.getInts(par2, par3, par4, par5);
+
+	for (int i1 = 0; i1 < par4 * par5; ++i1)
+	{
+	float f = (float) BiomeGenBase.biomeList[aint[i1]].getIntRainfall() / 65536.0F;
+
+	if (f > 1.0F) {
+	f = 1.0F;
+	}
+
+	par1ArrayOfFloat[i1] = f;
+	}
+
+	return par1ArrayOfFloat;
+	}
+
+	/**
+	* Return an adjusted version of a given temperature based on the y height
+	*/
+	@SideOnly(Side.CLIENT)
+	public float getTemperatureAtHeight(float par1, int par2)
+	{
+	return par1;
+	}
+
+	/**
+	* Returns a list of temperatures to use for the specified blocks. Args:
+	* listToReuse, x, y, width, length
+	*/
+	public float[] getTemperatures(float[] par1ArrayOfFloat, int par2, int par3, int par4, int par5)
+	{
+	IntCache.resetIntCache();
+
+	if (par1ArrayOfFloat == null || par1ArrayOfFloat.length < par4 * par5)
+	{
+	par1ArrayOfFloat = new float[par4 * par5];
+	}
+
+	int[] aint = this.myBiomeIndexLayer.getInts(par2, par3, par4, par5);
+
+	for (int i1 = 0; i1 < par4 * par5; ++i1)
+	{
+	float f = (float) BiomeGenBase.biomeList[aint[i1]].getIntTemperature() / 65536.0F;
+
+	if (f > 1.0F) {
+	f = 1.0F;
+	}
+
+	par1ArrayOfFloat[i1] = f;
+	}
+
+	return par1ArrayOfFloat;
 	}
 
 	/**
