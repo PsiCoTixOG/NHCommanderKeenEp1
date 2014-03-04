@@ -2,6 +2,7 @@ package Commander_Keen.WorldGen;
 
 import java.util.*;
 
+import Commander_Keen.Lib.NH_IDs;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.MINESHAFT;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.RAVINE;
@@ -175,9 +176,7 @@ public class ChunkProviderMars implements IChunkProvider
 
 		for (int k2 = 0; k2 < 4; ++k2) {
 		if ((d16 += d15) > 0.0D) {
-		par3ArrayOfByte[j2 += short1] = (byte) Block.stone.blockID;//Block.stone.blockID;
-		} else if (k1 * 8 + l1 < b2) {
-		par3ArrayOfByte[j2 += short1] = (byte) Block.waterStill.blockID;
+		par3ArrayOfByte[j2 += short1] = (byte) NH_IDs.MarsStoneID;//Block.stone.blockID;
 		} else {
 		par3ArrayOfByte[j2 += short1] = 0;
 		}
@@ -526,10 +525,10 @@ public class ChunkProviderMars implements IChunkProvider
 		* Returns the location of the closest structure of the specified type. If
 		* not found returns null.
 		*/
-		/*public ChunkPosition findClosestStructure(World par1World, String par2Str, int par3, int par4, int par5) 
+		public ChunkPosition findClosestStructure(World par1World, String par2Str, int par3, int par4, int par5) 
 		{
-		return "Stronghold".equals(par2Str) && this.strongholdGenerator != null ? this.strongholdGenerator.getNearestInstance(par1World, par3, par4, par5) : null;
-		}*/
+		return null;//"Stronghold".equals(par2Str) && this.strongholdGenerator != null ? this.strongholdGenerator.getNearestInstance(par1World, par3, par4, par5) : null;
+		}
 
 		public int getLoadedChunkCount() {
 		return 0;
@@ -542,13 +541,6 @@ public class ChunkProviderMars implements IChunkProvider
 		//this.strongholdGenerator.generate(this, this.worldObj, par1, par2, (byte[]) null);
 
 		}
-		}
-
-		@Override
-		public ChunkPosition findClosestStructure(World world, String s, int i,
-				int j, int k) {
-			// TODO Auto-generated method stub
-			return null;
 		}
 
 		@Override
