@@ -22,30 +22,32 @@ import net.minecraftforge.event.terraingen.WorldTypeEvent;
 
 public abstract class GenLayerMars extends GenLayer
 {
-public GenLayerMars(long seed) {
-super(seed);
-}
+	public GenLayerMars(long seed) 
+	{
+		super(seed);
+	}
 
-public static GenLayer[] makeTheWorld(long seed) {
+	public static GenLayer[] makeTheWorld(long seed) 
+	{
 
-GenLayer biomes = new GenLayerBiomesMars(1L);
+		GenLayer biomes = new GenLayerBiomesMars(1L);
 
-// more GenLayerZoom = bigger biomes
-biomes = new GenLayerZoom(1000L, biomes);
-biomes = new GenLayerZoom(1001L, biomes);
-biomes = new GenLayerZoom(1002L, biomes);
-biomes = new GenLayerZoom(1003L, biomes);
-biomes = new GenLayerZoom(1004L, biomes);
-biomes = new GenLayerZoom(1005L, biomes);
-
-
+		// more GenLayerZoom = bigger biomes
+		biomes = new GenLayerZoom(1000L, biomes);
+		biomes = new GenLayerZoom(1001L, biomes);
+		biomes = new GenLayerZoom(1002L, biomes);
+		biomes = new GenLayerZoom(1003L, biomes);
+		biomes = new GenLayerZoom(1004L, biomes);
+		biomes = new GenLayerZoom(1005L, biomes);
 
 
-GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, biomes);
 
-biomes.initWorldGenSeed(seed);
-genlayervoronoizoom.initWorldGenSeed(seed);
 
-return new GenLayer[] {biomes, genlayervoronoizoom};
-}
+		GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, biomes);
+
+		biomes.initWorldGenSeed(seed);
+		genlayervoronoizoom.initWorldGenSeed(seed);
+
+		return new GenLayer[] {biomes, genlayervoronoizoom};
+	}
 }

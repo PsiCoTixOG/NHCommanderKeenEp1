@@ -79,10 +79,10 @@ public class commander_keen
 
 	public static Block MarsPortal;
 	
-	public static final BiomeGenBase MarsPlains = new BiomeMarsPlains(25);
-	public static final BiomeGenBase MarsDarkSide = new BiomeMarsDarkSide(26);
-	public static final BiomeGenBase MarsHighlands = new BiomeMarsHighlands(27);
-	public static final BiomeGenBase MarsDarkHighlands = new BiomeMarsDarkHighlands(28);
+	public static BiomeGenBase MarsPlains;
+	public static BiomeGenBase MarsDarkSide;
+	public static BiomeGenBase MarsHighlands;
+	public static BiomeGenBase MarsDarkHighlands;
 	
 	//NOOB HAUS: Material Reg
 	static EnumArmorMaterial matSpaceSuit = EnumHelper.addArmorMaterial("SpaceSuit", 25, new int[] { 3, 8, 6, 3 }, 10);
@@ -113,10 +113,6 @@ public class commander_keen
 		
 		//NOOB HAUS: Register Creative Tab
 		LanguageRegistry.instance().addStringLocalization("itemGroup.KeenTab", "en_US", "KeenTab");
-		
-		//NOOB HAUS: Register World
-		DimensionManager.registerProviderType(commander_keen.dimensionId, WorldProviderMars.class, false);
-		DimensionManager.registerDimension(commander_keen.dimensionId, commander_keen.dimensionId);
 		
 		//NOOB HAUS: Items
 		//Keys
@@ -242,6 +238,14 @@ public class commander_keen
 		registerEntityEgg(EntityVorticon.class, 5845696, 2303701);
 		registerEntityEgg(EntityVorticonCommander.class, 5845696, 2360401);
 		
+		MarsPlains = new BiomeMarsPlains(25);
+		MarsDarkSide = new BiomeMarsDarkSide(26);
+	    MarsHighlands = new BiomeMarsHighlands(27);
+		MarsDarkHighlands = new BiomeMarsDarkHighlands(28);
+		
+		//NOOB HAUS: Register World
+		DimensionManager.registerProviderType(commander_keen.dimensionId, WorldProviderMars.class, false);
+		DimensionManager.registerDimension(commander_keen.dimensionId, commander_keen.dimensionId);
 	}
 	
 	public static int getUniqueEntityId()

@@ -1,5 +1,6 @@
 package Commander_Keen.WorldGen.Biomes;
 
+import Commander_Keen.commander_keen;
 import Commander_Keen.Lib.NH_IDs;
 import net.minecraft.world.biome.BiomeGenBase;
 
@@ -12,8 +13,8 @@ public class BiomeMarsDarkSide  extends BiomeGenBase
 	this.maxHeight = 0.6F;
 	this.spawnableMonsterList.clear();
 	this.spawnableCreatureList.clear();
-	this.topBlock = ((byte)NH_IDs.MarsStoneID);
-	this.fillerBlock = ((byte)NH_IDs.MarsStoneID);
+	this.topBlock = ((byte)commander_keen.MarsStone.blockID);
+	this.fillerBlock = ((byte)commander_keen.MarsStone.blockID);
 	this.setBiomeName("Mars Dark Side");
 
 	}
